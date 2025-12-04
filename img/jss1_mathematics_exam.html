@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cbt.shepherdinternationalcollege.org</title>
+
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4bb543;
+            --warning-color: #ffcc00;
+            --danger-color: #dc3545;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /** {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #eef2f3, #d9e4f5);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--dark-color);
+        }*/
+         body {
+            position: relative;
+            z-index: 1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8f0;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/templogo1.jpg') no-repeat center center;
+            background-size: 300px 300px;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .school-logo {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .school-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .username {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .exam-info {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        table.info {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.info td {
+            padding: 12px 15px;
+            font-size: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table.info tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.info td:first-child {
+            font-weight: 600;
+            width: 30%;
+            color: var(--primary-color);
+        }
+
+        .timer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+
+        #timer {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--danger-color);
+            background: #fff5f5;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(220, 53, 69, 0.2);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        #questionBox {
+            background: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 25px;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #questionText {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--dark-color);
+        }
+
+        .question-number {
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .option:hover {
+            border-color: var(--accent-color);
+            background-color: #f8fdff;
+        }
+
+        .option.selected {
+            border-color: var(--primary-color);
+            background-color: #f0f4ff;
+        }
+
+        .option input {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .option-label {
+            font-weight: 600;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #prevBtn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        #prevBtn:hover {
+            background-color: #5a6268;
+        }
+
+        #nextBtn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #nextBtn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        #submitBtn {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        #submitBtn:hover {
+            background-color: #3a9c35;
+        }
+
+        .navigation-dots {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: #e9ecef;
+            color: var(--dark-color);
+        }
+
+        .dot.answered {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .dot.current {
+            border: 2px solid var(--primary-color);
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+           
+            .school-info, .user-info {
+                justify-content: center;
+            }
+           
+            .btns {
+                flex-direction: column;
+                gap: 10px;
+            }
+           
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+           
+            .timer-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+         #logo img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        #student-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #student-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+            border: 3px solid white;
+            background: #ddd;
+        }
+          .section-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .section-btn {
+            padding: 12px 24px;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .section-btn.active {
+            background-color: #2e7d32;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .section-btn:not(.active) {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+        #theorySection {
+            display: none;
+            background: #fff9e6;
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            width: 80%;
+            border: 2px solid #ff9800;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #theoryQuestionText {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            border-left: 5px solid #ff9800;
+            font-family: Arial, sans-serif;
+        }
+        #theoryAnswer {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 200px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 15px;
+        }
+        .theory-nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .theory-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .theory-save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .theory-save-btn:hover {
+            background-color: #218838;
+        }
+        .theory-prev-btn, .theory-next-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .theory-prev-btn:hover, .theory-next-btn:hover {
+            background-color: #0069d9;
+        }
+        .theory-submit-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .theory-submit-btn:hover {
+            background-color: #c82333;
+        }
+        .theory-status {
+            text-align: center;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+        .windows-activate {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+            font-size: 14px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .exam-info {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        /* Math symbols styling */
+        sup, sub {
+            font-size: 0.75em;
+            line-height: 1;
+        }
+        sup {
+            vertical-align: super;
+        }
+        sub {
+            vertical-align: sub;
+        }
+        /* Theory Question Images */
+        .theory-image-container {
+            margin: 15px 0;
+            text-align: center;
+        }
+        .theory-image-wrapper {
+            display: inline-block;
+            max-width: 100%;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .theory-question-image {
+            max-width: 100%;
+            max-height: 300px;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+            background: #f0f0f0;
+            padding: 10px;
+        }
+        .image-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+        /* Objective question images */
+        #questionImageContainer {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .question-image {
+            max-width: 100%;
+            max-height: 250px;
+            height: auto;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: white;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+      <div id="logo">
+            <img src="img/templogo1.jpg" alt="COLLEGE CBT PORTAL">
+        </div>
+         <div id="student-info">
+            <center><strong>ATTENTION! CLICK ON SUBMIT BUTTON BEFORE YOUR TIME IS UP TO SAVE YOUR SCORE</strong></center>
+            <center><p id="datetime"></p></center>
+              <div id="welcome-message">
+            <label id="usernameDisplay"></label>
+        </div>
+         <div class="student-info">
+          <img id="userImage" src="img/default_user.jpg" alt="Student Image" style="width:120px; height:120px; border-radius:50%; border:3px solid #008000; display:block; margin:0 auto;">
+      
+          <h2 id="username">Student Name</h2>
+           </div>
+    <div class="container">
+        <!-- HEADER WITH SCHOOL LOGO AND USER INFO -->
+        <div class="header">
+            <div class="school-info">
+                <!--<div class="school-logo">
+                     <img src="img/templogo1.jpg" alt="COLLEGE CBT PORTAL">
+                </div>-->
+                  <!-- SECTION TOGGLE BUTTONS -->
+        <div class="section-toggle">
+            <button id="objectivesBtn" class="section-btn active" onclick="showSection('objectives')">OBJECTIVE QUESTIONS</button>
+            <button id="theoryBtn" class="section-btn" onclick="showSection('theory')">THEORY QUESTIONS</button>
+        </div>
+       
+                <div class="school-name">
+                    SHEPHERD INTERNATIONAL COLLEGE
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">
+                    <!-- User image will be loaded from session storage -->
+                </div>
+                <div class="username">
+                    <!-- Username will be loaded from session storage -->
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAM INFORMATION -->
+        <div class="exam-info">
+            <table class="info">
+                <tr>
+                    <td>Term:</td>
+                    <td id="term"></td>
+                </tr>
+                <tr>
+                    <td>Session:</td>
+                    <td id="session"></td>
+                </tr>
+                <tr>
+                    <td>Class:</td>
+                    <td id="class"></td>
+                </tr>
+                <tr>
+                    <td>Subject:</td>
+                    <td id="subject"></td>
+                </tr>
+            </table>
+           
+            <div class="timer-container">
+                <div>
+                    <strong>Time Remaining:</strong>
+                </div>
+                <div id="timer">05m : 00s</div>
+                <div class="progress-container">
+                    <span>Progress:</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span id="progressText">0/0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUESTION BOX -->
+        <div id="questionBox">
+            <div class="question-header">
+                <h2 id="questionText">Loading...</h2>
+                <div class="question-number" id="questionNumber">1 of 10</div>
+            </div>
+
+            <div class="options">
+                <div class="option" data-value="A">
+                    <input type="radio" name="option" value="A" id="optionAInput">
+                    <span class="option-label">A</span>
+                    <span id="optionA"></span>
+                </div>
+                <div class="option" data-value="B">
+                    <input type="radio" name="option" value="B" id="optionBInput">
+                    <span class="option-label">B</span>
+                    <span id="optionB"></span>
+                </div>
+                <div class="option" data-value="C">
+                    <input type="radio" name="option" value="C" id="optionCInput">
+                    <span class="option-label">C</span>
+                    <span id="optionC"></span>
+                </div>
+                <div class="option" data-value="D">
+                    <input type="radio" name="option" value="D" id="optionDInput">
+                    <span class="option-label">D</span>
+                    <span id="optionD"></span>
+                </div>
+            </div>
+
+            <div class="btns">
+                <button id="prevBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                    Previous
+                </button>
+                <button id="nextBtn">
+                    Next
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </button>
+                <button id="submitBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                    </svg>
+                    Submit Exam
+                </button>
+            </div>
+        </div>
+
+        <!-- QUESTION NAVIGATION DOTS -->
+        <div class="navigation-dots" id="navigationDots">
+            <!-- Navigation dots will be generated dynamically -->
+        </div>
+        <!-- THEORY SECTION -->
+    <div id="theorySection">
+        <h3 style="text-align: center; color: #d35400; margin-bottom: 20px;">THEORY QUESTIONS SECTION</h3>
+        <div class="theory-status" id="theoryStatus">
+            Question 1 of 5 | Saved: 0/5
+        </div>
+        <div id="theoryQuestionContainer">
+            <p id="theoryQuestionText">Loading theory questions...</p>
+            <div id="theoryImageContainer"></div>
+            <textarea id="theoryAnswer" rows="8" placeholder="Write your detailed answer here..."></textarea>
+            <div class="theory-nav-buttons">
+                <button onclick="prevTheoryQuestion()" class="theory-btn theory-prev-btn">Previous</button>
+                <button onclick="saveTheoryAnswer()" class="theory-btn theory-save-btn">Save Answer</button>
+                <button onclick="nextTheoryQuestion()" class="theory-btn theory-next-btn">Next</button>
+                <button onclick="submitTheoryExam()" class="theory-btn theory-submit-btn">Submit Theory</button>
+            </div>
+        </div>
+    </div>
+   
+    <div id="userAnswerCount">
+        <p id="answeredLabel">Answered: 0/5</p>
+        <p id="unansweredLabel">Unanswered: 5/5</p>
+    </div>
+   
+    <div class="windows-activate">
+        <p> &copy; cbt.shepherdinternationalcollege.org</p>
+    </div>
+
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>Computer Based Test System - Shepherd International College © 2025</p>
+        </div>
+    </div>
+
+    <script>
+
+        
+
+        // Store user answers and exam data
+        let questions = [];
+        let questionIndex = 0;
+        let timeLeft = 0;
+        let timerInterval;
+        let userAnswers = {};
+        let examData = {};
+
+        // Load user info from session storage
+        function loadUserInfo() {
+            const username = sessionStorage.getItem('username') || 'Student';
+            const userImage = sessionStorage.getItem('image');
+           
+            document.querySelector('.username').textContent = username;
+           
+            const userAvatar = document.querySelector('.user-avatar');
+            if (userImage) {
+                userAvatar.innerHTML = `<img src="${userImage}" alt="${username}">`;
+            } else {
+                userAvatar.textContent = username.charAt(0).toUpperCase();
+            }
+        }
+         const username = sessionStorage.getItem('username');
+                const image = sessionStorage.getItem('image');
+
+        if (!username) {
+          window.location.href = 'index.html';
+        } else {
+          document.getElementById('username').innerText = username;
+          
+      
+        document.getElementById('userImage').src =
+      'img/' + (sessionStorage.getItem('image') || 'default_user.jpg');
+        }
+
+        // LOAD JSON FILE
+        fetch("database/jss1_mathematics_objectives_questions.json")
+            .then(response => response.json())
+            .then(data => {
+                // Store exam data for result page
+                examData = {
+                    term: data.term,
+                    session: data.session,
+                    class: data.class,
+                    subject: data.subject,
+                    timeAllowed: data.time
+                };
+
+                // Load header info into page
+                document.getElementById("term").textContent = data.term;
+                document.getElementById("session").textContent = data.session;
+                document.getElementById("class").textContent = data.class;
+                document.getElementById("subject").textContent = data.subject;
+
+                // Time
+                timeLeft = data.time;
+                startTimer();
+
+                // Questions
+                questions = data.questions;
+               
+                // Initialize user answers object
+                questions.forEach((q, index) => {
+                    userAnswers[index] = null;
+                });
+               
+                // Create navigation dots
+                createNavigationDots();
+               
+                // Display first question
+                displayQuestion();
+            })
+            .catch(err => console.error("Error loading CBT JSON:", err));
+
+        // CREATE NAVIGATION DOTS
+        function createNavigationDots() {
+            const dotsContainer = document.getElementById("navigationDots");
+            dotsContainer.innerHTML = '';
+           
+            questions.forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.className = "dot";
+                dot.textContent = index + 1;
+                dot.addEventListener("click", () => {
+                    questionIndex = index;
+                    displayQuestion();
+                });
+                dotsContainer.appendChild(dot);
+            });
+           
+            updateNavigationDots();
+        }
+
+        // UPDATE NAVIGATION DOTS
+        function updateNavigationDots() {
+            const dots = document.querySelectorAll(".dot");
+            dots.forEach((dot, index) => {
+                dot.classList.remove("current", "answered");
+               
+                if (index === questionIndex) {
+                    dot.classList.add("current");
+                }
+               
+                if (userAnswers[index] !== null) {
+                    dot.classList.add("answered");
+                }
+            });
+        }
+
+        // DISPLAY QUESTION
+        function displayQuestion() {
+            const q = questions[questionIndex];
+
+            document.getElementById("questionText").textContent = q.question;
+            document.getElementById("questionNumber").textContent = `${questionIndex + 1} of ${questions.length}`;
+           
+            document.getElementById("optionA").textContent = q.options.A;
+            document.getElementById("optionB").textContent = q.options.B;
+            document.getElementById("optionC").textContent = q.options.C;
+            document.getElementById("optionD").textContent = q.options.D;
+
+            // Clear previous selection
+            document.querySelectorAll("input[name='option']").forEach(r => r.checked = false);
+            document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+           
+            // Restore user's answer if exists
+            if (userAnswers[questionIndex] !== null) {
+                const selectedOption = document.querySelector(`input[value="${userAnswers[questionIndex]}"]`);
+                if (selectedOption) {
+                    selectedOption.checked = true;
+                    selectedOption.closest(".option").classList.add("selected");
+                }
+            }
+           
+            // Update navigation dots
+            updateNavigationDots();
+           
+            // Update progress
+            updateProgress();
+           
+            // Update button states
+            updateButtonStates();
+        }
+
+        // UPDATE BUTTON STATES
+        function updateButtonStates() {
+            document.getElementById("prevBtn").disabled = questionIndex === 0;
+            document.getElementById("nextBtn").disabled = questionIndex === questions.length - 1;
+        }
+
+        // UPDATE PROGRESS
+        function updateProgress() {
+            const answeredCount = Object.values(userAnswers).filter(answer => answer !== null).length;
+            const progressPercentage = (answeredCount / questions.length) * 100;
+           
+            document.getElementById("progressFill").style.width = `${progressPercentage}%`;
+            document.getElementById("progressText").textContent = `${answeredCount}/${questions.length}`;
+        }
+
+        // TIMER FUNCTION
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                    return;
+                }
+
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+
+                document.getElementById("timer").textContent =
+                    `${minutes.toString().padStart(2, '0')}m : ${seconds.toString().padStart(2, '0')}s`;
+
+                timeLeft--;
+            }, 1000);
+        }
+
+        // CALCULATE SCORE
+        function calculateScore() {
+            let score = 0;
+            questions.forEach((q, index) => {
+                // For demo purposes, we'll assume the correct answer is always 'A'
+                // In a real system, you would have correct answers in your JSON
+                if (userAnswers[index] === 'A') {
+                    score++;
+                }
+            });
+            return score;
+        }
+
+        // SUBMIT EXAM
+        function submitExam() {
+            clearInterval(timerInterval);
+           
+            // Calculate score
+            const score = calculateScore();
+            const totalQuestions = questions.length;
+            const percentage = (score / totalQuestions) * 100;
+           
+            // Store results in session storage for the result page
+            sessionStorage.setItem('examResults', JSON.stringify({
+                score: score,
+                totalQuestions: totalQuestions,
+                percentage: percentage,
+                term: examData.term,
+                session: examData.session,
+                class: examData.class,
+                subject: examData.subject,
+                timeAllowed: examData.timeAllowed
+            }));
+           
+            // Redirect to result page
+            window.location.href = "result.html";
+        }
+
+        // EVENT LISTENERS
+        document.addEventListener("DOMContentLoaded", function() {
+            loadUserInfo();
+           
+            // Option selection
+            document.querySelectorAll(".option").forEach(option => {
+                option.addEventListener("click", function() {
+                    const value = this.getAttribute("data-value");
+                   
+                    // Update UI
+                    document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+                    this.classList.add("selected");
+                   
+                    // Update user answers
+                    userAnswers[questionIndex] = value;
+                   
+                    // Update navigation dots
+                    updateNavigationDots();
+                   
+                    // Update progress
+                    updateProgress();
+                });
+            });
+           
+            // Previous button
+            document.getElementById("prevBtn").onclick = () => {
+                if (questionIndex > 0) {
+                    questionIndex--;
+                    displayQuestion();
+                }
+            };
+
+            // Next button
+            document.getElementById("nextBtn").onclick = () => {
+                if (questionIndex < questions.length - 1) {
+                    questionIndex++;
+                    displayQuestion();
+                }
+            };
+
+            // Submit button
+            document.getElementById("submitBtn").onclick = () => {
+                if (confirm("Are you sure you want to submit your exam?")) {
+                    submitExam();
+                }
+            };
+        });
+
+         // ================== DATE & TIME ==================
+        function updateDateTime() {
+            let now = new Date();
+            let day = now.getDate();
+            let month = now.toLocaleString('default', { month: 'long' });
+            let year = now.getFullYear();
+            let suffix = "th";
+           
+            if (day === 1 || day === 21 || day === 31) suffix = "st";
+            else if (day === 2 || day === 22) suffix = "nd";
+            else if (day === 3 || day === 23) suffix = "rd";
+           
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            let ampm = hours >= 12 ? "PM" : "AM";
+            hours = hours % 12 || 12;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+           
+            let formattedDateTime = `${month} ${day}${suffix} ${year}, ${hours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById("datetime").innerText = formattedDateTime;
+        }
+       
+        // ======
+    </script>
+</body>
+</html>

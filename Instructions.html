@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
+    <title>cbt.petoacollege.org</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(150,255,150);
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 70%;
+    background: white;
+    padding: 20px;
+    margin: auto;
+    box-shadow: 0px 0px 10px gray;
+    border-radius: 10px;
+}
+
+.logo {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    text-align: left;
+    margin-top: 20px;
+}
+
+h2, h3 {
+    color: red;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background: green;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: darkgreen;
+</style>
+
+    <script>
+        // Disable right-click
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled for security reasons.");
+        });
+
+        // Disable common developer shortcuts (Inspect Element, View Source)
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "F12" ||
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+                (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+                alert("Inspecting the exam page is strictly prohibited.");
+            }
+        });
+
+        // Detect duplicate tabs
+        if (sessionStorage.getItem("examTabOpen")) {
+            alert("Duplicate tab detected! This action is prohibited.");
+            window.close();
+        } else {
+            sessionStorage.setItem("examTabOpen", "true");
+        }
+
+        window.addEventListener("beforeunload", function() {
+            sessionStorage.removeItem("examTabOpen");
+        });
+
+        // Tab-switch detection
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                //<!--alert("Warning: Tab switching detected! This is prohibited.");-->
+            }
+        });
+
+        // Full-screen enforcement
+        function goFullScreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Warn if the exam window is minimized or resized
+        window.addEventListener("resize", function() {
+            if (window.outerHeight < screen.height - 100 || window.outerWidth < screen.width - 100) {
+                alert("Warning: Do not resize or minimize the window!");
+            }
+        });
+
+        // Force fullscreen on page load
+        window.onload = function() {
+            setTimeout(goFullScreen, 500);
+        };
+         let backClickCount = 0;
+            let allowBack = false;
+
+            history.pushState(null, null, location.href);
+
+            window.onpopstate = function () {
+                if (!allowBack) {
+                    backClickCount++;
+
+                    if (backClickCount >= 50) {
+                        allowBack = true;
+                        alert("You have tried 50 times. Going back now...");
+                        history.back();
+                        return;
+                    }
+
+                    showBackModal();
+                }
+            };
+
+            function showBackModal() {
+                document.getElementById("backModalOverlay").style.display = "flex";
+                document.getElementById("passwordContainer").style.display = "none";
+                document.getElementById("backPassword").value = "";
+               
+                document.getElementById("modalButtons").innerHTML = `
+                    <button onclick="handleYes()" style="padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; background: limegreen; color: white; font-size: 16px; cursor: pointer;">Yes</button>
+                    <button onclick="closeBackModal()" style="padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; background: crimson; color: white; font-size: 16px; cursor: pointer;">No</button>
+                `;
+            }
+
+            function closeBackModal() {
+                document.getElementById("backModalOverlay").style.display = "none";
+                history.pushState(null, null, location.href);
+            }
+
+            function handleYes() {
+                document.getElementById("passwordContainer").style.display = "block";
+                document.getElementById("modalButtons").innerHTML = `
+                    <button onclick="checkPassword()" style="padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; background: limegreen; color: white; font-size: 16px; cursor: pointer;">Submit</button>
+                    <button onclick="closeBackModal()" style="padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; background: crimson; color: white; font-size: 16px; cursor: pointer;">Cancel</button>
+                `;
+            }
+
+            function checkPassword() {
+                const correctPassword = "admin";
+                const enteredPassword = document.getElementById("backPassword").value;
+
+                if (enteredPassword === correctPassword) {
+                    allowBack = true;
+                    document.getElementById("backModalOverlay").style.display = "none";
+                    history.back();
+                } else {
+                    alert("Incorrect password. Staying on this page.");
+                    closeBackModal();
+                }
+            }
+    </script>
+</head>
+             <div id="backModalOverlay" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); color: #fff; font-family: Arial, sans-serif; justify-content: center; align-items: center; flex-direction: column;">
+                <div id="backModal" style="background: #222; padding: 30px; border-radius: 10px; text-align: center; width: 90%; max-width: 400px;">
+                    <p style="font-size: 18px; margin: 0 0 10px;">Do you really want to go back?</p>
+
+                    <div id="passwordContainer" style="display: none;">
+                        <p style="margin-top: 10px;">Enter password to go back:</p>
+                        <input type="password" id="backPassword" placeholder="Enter password"
+                            style="padding: 10px; width: 80%; margin-top: 10px; border-radius: 5px; border: none; font-size: 16px;">
+                    </div>
+
+                    <div id="modalButtons" style="margin-top: 20px;">
+                        <button onclick="handleYes()" style="padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; background: limegreen; color: white; font-size: 16px; cursor: pointer;">Yes</button>
+                        <button onclick="closeBackModal()" style="padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; background: crimson; color: white; font-size: 16px; cursor: pointer;">No</button>
+                    </div>
+                </div>
+            </div>
+
+<body oncontextmenu="return false;">
+    <div class="container">
+        <img src="img/templogo.jpg" alt="School Logo" class="logo">
+        <h1>EXAMINATION INSTRUCTIONS</h1>
+
+        <div class="instructions">
+            <h2>Rules and Regulations</h2>
+            <p>Please read the following rules carefully before proceeding:</p>
+           
+            <h3>General Rules</h3>
+            <ul>
+                <li>Ensure you have a stable internet connection before starting.</li>
+                <li>Complete the exam within the allocated time.</li>
+                <li>All answers will be auto-submitted when time runs out.</li>
+                <li>Only one attempt is allowed per student.</li>
+                <li>Leaving or refreshing the exam page may result in disqualification.</li>
+            </ul>
+
+            <h3>Prohibited Actions</h3>
+            <ul>
+                <li>**No inspecting the page source or using developer tools.**</li>
+                <li>**No multiple tabs or duplicate exam pages.**</li>
+                <li>**No using external help or other devices.**</li>
+                <li>**No tab-switching, minimizing, or resizing the exam window.**</li>
+            </ul>
+
+            <h3>Warnings & Penalties</h3>
+            <ul>
+                <li><strong>First Warning:</strong> A warning alert will be displayed.</li>
+                <li><strong>Second Violation:</strong> The exam session may be terminated.</li>
+                <li><strong>Final Penalty:</strong> Your exam submission may be voided.</li>
+            </ul>
+
+            <h2>Proceed to Exam</h2>
+            <p>By clicking **"Proceed to Exam"**, you agree to comply with all rules.</p>
+            <a href="dashboard.php" class="btn">Proceed to Exam</a>
+        </div>
+    </div>
+</body>
+</html>
+

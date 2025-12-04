@@ -1,0 +1,34 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "Explain the concept of place value in mathematics. Use examples to illustrate your explanation.",
+            "marks": 10,
+            "image": null
+        },
+        {
+            "id": 2,
+            "question": "What are prime numbers? Give five examples and explain why each is a prime number.",
+            "marks": 15,
+            "image": "img/wfs101.png"
+        },
+        {
+            "id": 3,
+            "question": "Solve the equation: 3x + 7 = 22. Show all your working step by step.",
+            "marks": 12,
+            "image": null
+        },
+        {
+            "id": 4,
+            "question": "Calculate the perimeter of a rectangle with length 15cm and width 8cm. Explain your method and show all calculations.",
+            "marks": 10,
+            "image": null
+        },
+        {
+            "id": 5,
+            "question": "A triangle has angles measuring 45&deg;, 45&deg;, and 90&deg;. If the two equal sides are each 10cm long, calculate the length of the hypotenuse. Show your working using the Pythagorean theorem.",
+            "marks": 15,
+            "image": null
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "What is the value of the number  &pi; (pi) approximately?",
+            "options": {
+                "A": "3.14",
+                "B": "2.71",
+                "C": "1.41",
+                "D": "1.61"
+            },
+            "answer": "A",
+            "image": "img/circle.png"
+        },
+        {
+            "id": 2,
+            "question": "If &theta; = 30&deg;, what is sin(&theta;)?",
+            "options": {
+                "A": "1/2",
+                "B": "&radic;3/2",
+                "C": "&radic;2/2",
+                "D": "1"
+            },
+            "answer": "A",
+            "image": null
+        },
+        {
+            "id": 3,
+            "question": "What is the area of a circle with radius r?",
+            "options": {
+                "A": "&pi;r^2",
+                "B": "2&pi;r",
+                "C": "&pi;r",
+                "D": "4&pi;r^2"
+            },
+            "answer": "A",
+            "image": null
+        },
+        {
+            "id": 4,
+            "question": "Solve for x: 2x + 5 = 15",
+            "options": {
+                "A": "5",
+                "B": "10",
+                "C": "7.5",
+                "D": "2.5"
+            },
+            "answer": "A",
+            "image": null
+        },
+        {
+            "id": 5,
+            "question": "What is the Pythagorean theorem for a right-angled triangle?",
+            "options": {
+                "A": "a^2 + b^2 = c^2",
+                "B": "a + b = c",
+                "C": "a &times; b = c",
+                "D": "a^2 &times; b^2 = c^2"
+            },
+            "answer": "A",
+            "image": null
+        }
+    ]
+}

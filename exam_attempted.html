@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
+    <title>cbt.shepherdinternationalcollege.org</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Keep all your existing styles intact */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+       
+        .root {
+            --primary-color: #008000;
+            --secondary-color: #d90000;
+            --background-color: rgb(50,125,50);
+            --text-color: #333;
+            --card-bg: white;
+            --header-bg: rgb(50,125,50);
+            --header-text: white;
+            --nav-bg: #006400;
+            --input-border: #ddd;
+        }
+       
+        .dark-theme {
+            --primary-color: #4CAF50;
+            --secondary-color: #ff5252;
+            --background-color: #2c2c2c;
+            --text-color: #f0f0f0;
+            --card-bg: #3c3c3c;
+            --header-bg: rgb(50,125,50);
+            --header-text: #f0f0f0;
+            --nav-bg: #1b5e20;
+            --input-border: #555;
+        }
+       
+        body {
+            position: relative;
+            z-index: 1;
+        }
+       
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/templogo1.jpg') no-repeat center center;
+            background-size: 300px 300px;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+            background-color: white;
+            align-items: center;
+            text-align: center;
+        }
+       
+        .container {
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+       
+        nav {
+            background-color: var(--nav-bg);
+            padding: 15px 0;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+       
+        #student-image {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+       
+        header {
+            background-color: darkred;
+            color: var(--header-text);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+       
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+       
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-weight: bold;
+            color: var(--primary-color);
+            border: 2px solid var(--secondary-color);
+        }
+       
+        .welcome-message {
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-left: 5px solid var(--secondary-color);
+            margin: 20px 0;
+            font-size: 16px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+       
+        .welcome-message img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto;
+            border: 3px solid var(--primary-color);
+        }
+       
+        .exam-sections {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+       
+        .exam-section {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            overflow: hidden;
+            min-width: 300px;
+        }
+       
+        .section-header {
+            background-color: gold;
+            color: var(--header-text);
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+       
+        .section-body {
+            padding: 25px;
+        }
+       
+        select, input[type="password"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 15px;
+            border: 1px solid var(--input-border);
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: center;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+       
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+       
+        .btn:hover {
+            background-color: var(--nav-bg);
+        }
+       
+        .btn-secondary {
+            background-color: #007bff;
+        }
+       
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+       
+        .btn-danger {
+            background-color: #dc3545;
+        }
+       
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+       
+        .windows-activate {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-color);
+            font-size: 14px;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+       
+        @media (max-width: 900px) {
+            .exam-sections {
+                flex-direction: column;
+            }
+        }
+       
+        .logout-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: crimson;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       
+        .admin-btn {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       
+        .attempt-status {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+       
+        .completed {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+       
+        .available {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
+        }
+                .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+       
+        .header {
+            background: linear-gradient(to right, #dc3545, #e74c3c);
+            color: white;
+            padding: 25px;
+        }
+       
+        .header i {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+       
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+       
+        .content {
+            padding: 30px;
+        }
+       
+        .student-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+       
+        .student-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #dc3545;
+            object-fit: cover;
+        }
+       
+        .student-details {
+            text-align: left;
+        }
+       
+        .student-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+       
+        .exam-details {
+            color: #666;
+            font-size: 14px;
+        }
+       
+        .message {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #856404;
+        }
+       
+        .message h3 {
+            margin-bottom: 10px;
+            color: #dc3545;
+        }
+       
+        .actions {
+            margin-top: 25px;
+        }
+       
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 5px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+       
+        .btn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+       
+        .btn-secondary {
+            background: #6c757d;
+        }
+       
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+       
+        .contact-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #495057;
+        }
+    </style>
+   
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!--<button class="admin-btn" onclick="goToAdmin()">Admin Panel</button>-->
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="img/templogo1.jpg" alt="School Logo">
+                </div>
+            </div>
+            <p>2025/2026 FIRST TERM COMPUTER BASED TEST EXAMINATION</p>
+        </header>
+       
+        <div class="welcome-message">
+            <img id="userImage" src="img/default_user.jpg" alt="Student Photo"><br>
+             <!--<img id="studentImage" src="img/default_user.jpg" alt="Student" class="student-image">-->
+            <h2>WELCOME: <span id="user">Student</span></h2>
+            <div id="attemptStatus" class="attempt-status"></div>
+        </div>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h1>Exam Already Attempted</h1>
+            <p>You have already completed this examination</p>
+        </div>
+       
+        <div class="content">
+            <div class="student-info">
+                <img id="studentImage" src="img/default_user.jpg" alt="Student" class="student-image">
+                <div class="student-details">
+                    <div class="student-name" id="studentName">Student Name</div>
+                    <div class="exam-details" id="examDetails">Subject - Class</div>
+                </div>
+            </div>
+           
+            <div class="message">
+                <h3>⚠️ Important Notice</h3>
+                <p>Our records show that you have already completed this examination. Each student is allowed only one attempt per subject to maintain exam integrity.</p>
+                <p><strong>If you believe this is an error, please contact your administrator or teacher.</strong></p>
+            </div>
+           
+            <div class="contact-info">
+                <p><strong>Contact Administrator:</strong><br>
+                Email: admin@shepherdinternationalcollege.org<br>
+                Phone: [+234802345678]</p>
+            </div>
+           
+            <div class="actions">
+                <button class="btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+                <button class="btn btn-secondary" onclick="goToDashboard()">
+                    <i class="fas fa-tachometer-alt"></i> Back to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+                const username = sessionStorage.getItem('username');
+        const imageName = sessionStorage.getItem('image');
+        const password = sessionStorage.getItem('password');
+       
+        // Redirect if not logged in
+        if (!username) {
+            alert("Please log in first.");
+            window.location.href = "index.html";
+        }
+       
+        document.getElementById('user').innerText = username || 'Student';
+        document.getElementById('userImage').src = imageName ? 'img/' + imageName : 'img/default_user.jpg';
+
+        // Load student information
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = sessionStorage.getItem('username') || 'Student';
+            const userImage = sessionStorage.getItem('image') || 'default_user.jpg';
+            const cls = sessionStorage.getItem('class') || 'Unknown Class';
+            const sub = sessionStorage.getItem('subject') || 'Unknown Subject';
+           
+            document.getElementById('studentName').textContent = username;
+            document.getElementById('studentImage').src = 'img/' + userImage;
+            document.getElementById('examDetails').textContent =
+                `${formatSubjectName(sub)} - ${cls.toUpperCase()}`;
+        });
+
+        function formatSubjectName(subject) {
+            const subjectMap = {
+                'mathematics': 'Mathematics',
+                'english_language': 'English Language',
+                // Add other subjects as needed
+            };
+            return subjectMap[subject] || subject.charAt(0).toUpperCase() + subject.slice(1).replace(/_/g, ' ');
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'index.html';
+        }
+
+        function goToDashboard() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
