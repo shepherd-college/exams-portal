@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
-    <title>cbt.Shepherdinternationalcollege.org - DEMO    Exam</title>
+    <title>cbt.shepherdInternationalcollege.org - DIGITAL TECHNOLOGY   Exam</title>
     <script>
          // Disable back navigation
     history.pushState(null, null, location.href);
@@ -106,7 +106,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('img/templogo1.jpg') no-repeat center center;
+            background: url('img/mainlogo.png') no-repeat center center;
             background-size: 300px 300px;
             opacity: 0.1;
             z-index: 0;
@@ -135,7 +135,7 @@
         }
         #header {
             padding: 20px;
-            background: linear-gradient(to right, brown, darkred);
+            background: linear-gradient(to right, darkred, pink);
             color: white;
             border-bottom: 5px solid #ff9800;
         }
@@ -475,7 +475,7 @@
             <button id="logout" onclick="logout()">Logout</button>
         </div>
         <div id="logo">
-            <img src="img/templogo1.jpg" alt="COLLEGE CBT PORTAL">
+            <img src="img/mainlogo.jpg" alt="COLLEGE CBT PORTAL">
         </div>
         <div id="student-info">
             <center><strong>ATTENTION! CLICK ON SUBMIT BUTTON BEFORE YOUR TIME IS UP TO SAVE YOUR SCORE</strong></center>
@@ -497,8 +497,8 @@
         </div>-->
 
     
-        <center><h3>SHEPHERD INTERNATIONAL COLLEGE SIJE  ADO EKITI </h3></center> 
-        <center><h3>FIRST TERM EXAMINATION 2025/2026 ACADEMIC SESSION</h3></center>
+        <center><h3>SHEPHERD INTERNATIONAL COLLEGE ADO EKITI </h3></center> 
+        <center><h3>SECOND TERM EXAMINATION 2025/2026 ACADEMIC SESSION</h3></center>
        
         <!-- SECTION TOGGLE BUTTONS -->
         <div class="section-toggle">
@@ -507,7 +507,7 @@
         </div>
        
         <div class="exam-info">
-            Exam: <span id="examInfo" style="color: lime;">   DEMO    - SS1 (FIRST TERM)</span>
+            Exam: <span id="examInfo" style="color: lime;">  COMPUTER & DIGITAL TECHNOLOGY   - JSS1 (SECOND TERM)</span>
         </div>
        
         <div id="timer"></div>
@@ -574,110 +574,161 @@
     </div>
    
     <div class="windows-activate">
-        <p> &copy; cbt.Shepherdinternationalcollege.org</p>
+        <p> &copy; cbt.shepherdinternationalcollege.org</p>
     </div>
 
     <script>
            // Get stored username and image from sessionStorage
        
             
+    
         // ================== STATIC QUESTIONS DATA ==================
-        const staticObjectivesQuestions = [
-            {
-                id: 1,
-                question: "What is the value of &pi; (pi) approximately?",
-                options: {
-                    A: "3.14",
-                    B: "2.71",
-                    C: "1.41",
-                    D: "1.61"
-                },
-                answer: "A",
-                image: "img/wfs101.png"
-            },
-            {
-                id: 2,
-                question: "If &theta; = 30&deg;, what is sin(&theta;)?",
-                options: {
-                    A: "1/2",
-                    B: "&radic;3/2",
-                    C: "&radic;2/2",
-                    D: "1"
-                },
-                answer: "A",
-                image: null
-            },
-            {
-                id: 3,
-                question: "What is the area of a circle with radius r?",
-                options: {
-                    A: "&pi;r^2",
-                    B: "2&pi;r",
-                    C: "&pi;r",
-                    D: "4&pi;r^2"
-                },
-                answer: "A",
-                image: null
-            },
-            {
-                id: 4,
-                question: "Solve for x: 2x + 5 = 15",
-                options: {
-                    A: "5",
-                    B: "10",
-                    C: "7.5",
-                    D: "2.5"
-                },
-                answer: "A",
-                image: null
-            },
-            {
-                id: 5,
-                question: "What is the Pythagorean theorem for a right-angled triangle?",
-                options: {
-                    A: "a^2 + b^2 = c^2",
-                    B: "a + b = c",
-                    C: "a &times; b = c",
-                    D: "a^2 &times; b^2 = c^2"
-                },
-                answer: "A",
-                image: null
-            }
-        
-        ];
+   const staticObjectivesQuestions = [
+                                                                                               {
+                                        "id": 1,
+                                        "question": "Stones in the stone age were used for ______",
+                                        "options": { "A": "Inscribing marks", "B": "Running", "C": "Clapping", "D": "Eating" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 2,
+                                        "question": "The Second Generation Computer was based on",
+                                        "options": { "A": "Vacuum Tube", "B": "Silicon Chips", "C": "Transistor", "D": "Bio Chips" },
+                                        "answer": "C"
+                                      },
+                                      {
+                                        "id": 3,
+                                        "question": "The invention of computer and internet at industrial age gave birth to _____",
+                                        "options": { "A": "Electronic age", "B": "Power age", "C": "Light age", "D": "New age" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 4,
+                                        "question": "The instruments used during the stone age include the following except ______",
+                                        "options": { "A": "Stone", "B": "Leaves", "C": "Sticks", "D": "Sand" },
+                                        "answer": "D"
+                                      },
+                                      {
+                                        "id": 5,
+                                        "question": "Electronic age is also known as computer age because of the use of _____",
+                                        "options": { "A": "Computers", "B": "Machines", "C": "Tools", "D": "Devices" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 6,
+                                        "question": "Internet browsing, GSM and e-mail are all machines used in ______",
+                                        "options": { "A": "Electronic age", "B": "Iron age", "C": "Stone age", "D": "Middle age" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 7,
+                                        "question": "Data as true fact information are passed from _____",
+                                        "options": { "A": "Computers", "B": "Individuals", "C": "News", "D": "Processes" },
+                                        "answer": "B"
+                                      },
+                                      {
+                                        "id": 8,
+                                        "question": "One of the qualities of good information is _____",
+                                        "options": { "A": "Accuracy", "B": "Real", "C": "Good", "D": "Pure" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 9,
+                                        "question": "The ancient methods of transmitting information include the following except _____",
+                                        "options": { "A": "Oral", "B": "Beating drums", "C": "Fire lighting", "D": "Writing book" },
+                                        "answer": "D"
+                                      },
+                                      {
+                                        "id": 10,
+                                        "question": "The printing of paper with the use of special ink is called ______",
+                                        "options": { "A": "Text", "B": "Print", "C": "Inscribing", "D": "Writing" },
+                                        "answer": "B"
+                                      },
+                                      {
+                                        "id": 11,
+                                        "question": "The device used for talking to another person far away on another telephone is called ____",
+                                        "options": { "A": "Radio", "B": "Television", "C": "Telephone", "D": "Telex" },
+                                        "answer": "C"
+                                      },
+                                      {
+                                        "id": 12,
+                                        "question": "The device that is connected to a network like telephone used for communication is the _______",
+                                        "options": { "A": "Radio", "B": "Telex", "C": "Cable", "D": "Fax" },
+                                        "answer": "D"
+                                      },
+                                      {
+                                        "id": 13,
+                                        "question": "Raw facts, figures and symbols are ______",
+                                        "options": { "A": "Information", "B": "Processing", "C": "Data", "D": "Processing cycle" },
+                                        "answer": "C"
+                                      },
+                                      {
+                                        "id": 14,
+                                        "question": "The calculating device which was based on the principles of logarithm is ______",
+                                        "options": { "A": "Slide Rule", "B": "Abacus", "C": "Ruler", "D": "Stones" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 15,
+                                        "question": "The processing of data using computer can be demonstrated as an ______",
+                                        "options": { "A": "OPI", "B": "PIO", "C": "IPO", "D": "PPI" },
+                                        "answer": "C"
+                                      },
+                                      {
+                                        "id": 16,
+                                        "question": "All except _______ are parts of a computer.",
+                                        "options": { "A": "Legs", "B": "Mouse", "C": "Speakers", "D": "Monitor" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 17,
+                                        "question": "The keyboard looks like a _______",
+                                        "options": { "A": "Typewriter", "B": "Laptop", "C": "System", "D": "Piano" },
+                                        "answer": "A"
+                                      },
+                                      {
+                                        "id": 18,
+                                        "question": "The device which produces texts and graphics on a physical medium is ______",
+                                        "options": { "A": "Mouse", "B": "Keyboard", "C": "Printer", "D": "Monitor" },
+                                        "answer": "C"
+                                      },
+                                      {
+                                        "id": 19,
+                                        "question": "All are examples of input devices except _____",
+                                        "options": { "A": "Light pen", "B": "Joystick", "C": "Scanner", "D": "Printer" },
+                                        "answer": "D"
+                                      },
+                                      {
+                                        "id": 20,
+                                        "question": "RAM means __________",
+                                        "options": { "A": "Random Access Memory", "B": "Race Access Memory", "C": "Radius Action Memory", "D": "None of the above" },
+                                        "answer": "A"
+                                      }
+];
 
-        const staticTheoryQuestions = [
+ const staticTheoryQuestions = [
             {
-                id: 1,
-                question: "Explain the concept of place value in Mathematics . Use examples to illustrate your explanation.",
-                marks: 10,
-                image: null
-            },
-            {
-                id: 2,
-                question: "What are prime numbers? Give five examples and explain why each is a prime number.",
-                marks: 15,
-                image: "img/SIC.png"
-            },
-            {
-                id: 3,
-                question: "Solve the equation: 3x + 7 = 22. Show all your working step by step.",
-                marks: 12,
-                image: null
-            },
-            {
-                id: 4,
-                question: "Calculate the perimeter of a rectangle with length 15cm and width 8cm. Explain your method and show all calculations.",
-                marks: 10,
-                image: null
-            },
-            {
-                id: 5,
-                question: "A triangle has angles measuring 45&deg;, 45&deg;, and 90&deg;. If the two equal sides are each 10cm long, calculate the length of the hypotenuse. Show your working using the Pythagorean theorem.",
-                marks: 15,
-                image: null
-            }
-        ];
+                "id": 1,
+                "question": "a. Define Data\nb. Fill in the following for Information Transmission:\n- Examples of Ancient Methods\n- Examples of Modern Methods  ",
+                "marks": 0,
+                "image": "images/Jss1_computer_theory1.png"
+              },
+              {
+                "id": 2,
+                "question": "a. Give two examples of each:\n- Modes of Receiving Information\n- Types of Data\n- Sources of Information\nb. List four qualities of good information",
+                "marks": 0,
+                "image": null
+              },
+              {
+                "id": 3,
+                "question": "a. Give five Information Ages\nb. Fill in the following means of Information Transmission:\n- Examples of Electronic Devices\n- Examples of Non-Electronic Devices ",
+                "marks": 0,
+                "image": "images/Jss1_computer_theory3.png"
+              }
+          
+           
+    
+];
         // ================== APPLICATION VARIABLES ==================
         let questions = [];
         let currentQuestion = 0;
@@ -695,10 +746,10 @@
                 const examInfoText = examInfoElement.textContent;
                 // Parse the text to extract subject and class
                 // This is a simple example - adjust based on your actual text format
-                localStorage.setItem('examSubject', 'FINAL TEST');
-                localStorage.setItem('examClass', 'SCORE');
+                localStorage.setItem('examSubject', 'EXAMINATION');
+                localStorage.setItem('examClass', 'RESULT');
             }
-            localStorage.setItem('examTerm', 'FIRST TERM 2025/2026');
+            localStorage.setItem('examTerm', 'SECOND TERM 2025/2026');
              /*let username = sessionStorage.getItem('username');
              const userImage = sessionStorage.getItem('image');
             document.getElementById("usernameDisplay").innerText = "WELCOME:" + " " + username;
@@ -1027,7 +1078,7 @@
                     localStorage.setItem("pendingUsername", username);
                    
                     // ✅ Get exam info from sessionStorage or use default
-                    const examInfo = sessionStorage.getItem('examInfo') || 'EXAMINATION - RERSULT (FIRST TERM)';
+                    const examInfo = sessionStorage.getItem('examInfo') || 'EXAM TEST  - RESULT (SECOND TERM)';
                     localStorage.setItem("examInfo", examInfo);
                    
                     // ✅ DO NOT mark exam as completed here - wait for confirmation on results page

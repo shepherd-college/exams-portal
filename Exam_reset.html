@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
+    <title>cbt.wisdomschools.org</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         body {
+                position: relative;
+                z-index: 1;
+            }
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('img/mainlogo.jpg') no-repeat center center;
+                background-size: 300px 300px; /* adjust as needed*/ 
+                opacity: 0.1; /* watermark transparency */
+                z-index: 0;
+                pointer-events: none;
+                text-align: center 
+                padding: 0;/* allow clicks through*/
+                margin: 0;
+                padding: 0;
+                 background-color: darkred;
+                align-items: center;       
+                text-align: center;
+                 box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+       
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+       
+        header {
+            background: linear-gradient(to right, darkred, orange);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+       
+        .admin-panel {
+            padding: 30px;
+        }
+       
+        .control-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+        }
+       
+        .control-section h3 {
+            color: #4a0080;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a0080;
+            padding-bottom: 8px;
+        }
+       
+        select, input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+       
+        button {
+            background: #4a0080;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+       
+        button:hover {
+            background: #6a00b3;
+        }
+       
+        .btn-danger {
+            background: #dc3545;
+        }
+        btn-cool {
+            background: rgb(45,125,45);
+        }
+        btn-love {
+            background: rgb(200,125,200);
+       }
+        .btn-danger:hover {
+            background: #c82333;
+        }
+       
+        .btn-secondary {
+            background: #6c757d;
+        }
+       
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+       
+        .attempts-list {
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background: white;
+        }
+       
+        .attempt-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+       
+        .attempt-item:last-child {
+            border-bottom: none;
+        }
+       
+        .completed {
+            color: #28a745;
+            font-weight: bold;
+        }
+       
+        .navigation {
+            text-align: center;
+            margin-top: 20px;
+        }
+       
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+       
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-left: 4px solid #4a0080;
+        }
+       
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4a0080;
+        }
+       
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+         #logout {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+          #logo img {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        #student-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #student-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+            border: 3px solid white;
+            background: #ddd;
+        }
+        #welcome-message {
+            color: #ffeb3b;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false">
+    <div id="header">
+      
+        <div id="logo">
+            <img src="img/mainlogo.png" alt="COLLEGE CBT PORTAL">
+        </div>
+
+
+
+    <div class="container">
+        <header>
+            <h1>Admin Panel - CBT System</h1>
+            <p>Manage Student Exam Attempts</p>
+        </header>
+       
+        <div class="admin-panel">
+            <div class="stats" id="statsContainer">
+                <!-- Statistics will be loaded here -->
+            </div>
+           
+            <div class="control-section">
+                <h3>Reset Student Attempts</h3>
+                <select id="classSelectAdmin">
+                    <option value="">-- Select Class --</option>
+                    <option value="jss1">JSS1</option>
+                    <option value="jss2">JSS2</option>
+                    <option value="jss3">JSS3</option>
+                    <option value="ss1">SS1</option>
+                    <option value="ss2">SS2</option>
+                    <option value="ss3">SS3</option>
+                </select>
+               
+                <select id="studentSelect">
+                    <option value="">-- Select Student --</option>
+                </select>
+               
+                <select id="subjectSelectAdmin">
+                    <option value="">-- Select Subject --</option>
+                    <option value="all">All Subjects</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="english_language">English Language</option>
+                    <option value="english_literature">Literature in English</option>
+                    <option value="intermediate_science">Intermediate Science</option>
+                    <option value="digital_technology">Digital & Computer Technology</option>
+                    <option value="home_economics">Home Economics</option>
+                    <option value="livestock_farming">Livestock Farming</option>
+                    <option value="social_studies">Social Studies</option>
+                    <option value="business_studies">Business Studies</option>
+                    <option value="cultural_and_creative_art">Cultural & Creative Art</option>
+                    <option value="yoruba">Yoruba</option>
+                    <option value="phe">Physical Health Education</option>
+                    <option value="crs">Christian Religious Studies</option>
+                    <option value="french">French</option>
+                    <option value="music">Music</option>
+                    <option value="phonics">Phonics</option>
+                    <option value="nigerian_history">Nigeria History</option>
+                    <option value="ekiti_values">Ekiti Values</option>
+                </select>
+               
+                <button onclick="resetAttempt()" class="btn-danger">Reset Selected Attempt</button>
+                <button onclick="resetAllClassAttempts()" class="btn-success">Reset All Attempts for Class</button>
+            </div>
+           
+            <div class="control-section">
+                <h3>Current Attempts</h3>
+                <select id="viewClassSelect" onchange="loadAttempts()">
+                    <option value="">-- Select Class to View --</option>
+                    <option value="jss1">JSS1</option>
+                    <option value="jss2">JSS2</option>
+                    <option value="jss3">JSS3</option>
+                    <option value="ss1">SS1</option>
+                    <option value="ss2">SS2</option>
+                    <option value="ss3">SS3</option>
+                </select>
+               
+                <div class="attempts-list" id="attemptsList">
+                    <!-- Attempts will be loaded here -->
+                </div>
+            </div>
+           
+            <div class="navigation">
+                <button onclick="goToDashboard()" class="btn-success">Back to Dashboard</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load statistics when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStatistics();
+            document.getElementById('classSelectAdmin').addEventListener('change', loadStudents);
+        });
+
+        // Load statistics
+        function loadStatistics() {
+            const classes = ['jss1', 'jss2', 'jss3', 'ss1', 'ss2', 'ss3'];
+            let totalAttempts = 0;
+            let totalStudents = new Set();
+           
+            classes.forEach(cls => {
+                const attempts = getExamAttempts(cls);
+                Object.keys(attempts).forEach(student => {
+                    totalStudents.add(student);
+                    Object.values(attempts[student]).forEach(completed => {
+                        if (completed) totalAttempts++;
+                    });
+                });
+            });
+           
+            const statsContainer = document.getElementById('statsContainer');
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${classes.length}</div>
+                    <div class="stat-label">Classes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalStudents.size}</div>
+                    <div class="stat-label">Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalAttempts}</div>
+                    <div class="stat-label">Completed Exams</div>
+                </div>
+            `;
+        }
+
+        // Get exam attempts for a class
+        function getExamAttempts(cls) {
+            const key = `${cls}_exam_attempts`;
+            const stored = localStorage.getItem(key);
+            return stored ? JSON.parse(stored) : {};
+        }
+
+        // Save exam attempts for a class
+        function saveExamAttempts(cls, data) {
+            const key = `${cls}_exam_attempts`;
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // Load students for selected class
+        function loadStudents() {
+            const cls = document.getElementById('classSelectAdmin').value;
+            const studentSelect = document.getElementById('studentSelect');
+            studentSelect.innerHTML = '<option value="">-- Select Student --</option>';
+           
+            if (!cls) return;
+           
+            const attempts = getExamAttempts(cls);
+            Object.keys(attempts).forEach(student => {
+                const option = document.createElement('option');
+                option.value = student;
+                option.textContent = student;
+                studentSelect.appendChild(option);
+            });
+        }
+
+        // Reset specific attempt
+        function resetAttempt() {
+            const cls = document.getElementById('classSelectAdmin').value;
+            const student = document.getElementById('studentSelect').value;
+            const subject = document.getElementById('subjectSelectAdmin').value;
+           
+            if (!cls || !student) {
+                alert('Please select class and student');
+                return;
+            }
+           
+            const attempts = getExamAttempts(cls);
+           
+            if (subject === 'all') {
+                // Reset all subjects for this student
+                attempts[student] = {};
+                alert(`Reset all attempts for ${student} in ${cls.toUpperCase()}`);
+            } else if (attempts[student] && attempts[student][subject]) {
+                // Reset specific subject
+                attempts[student][subject] = false;
+                alert(`Reset ${subject} attempt for ${student} in ${cls.toUpperCase()}`);
+            } else {
+                alert('No attempt found to reset');
+                return;
+            }
+           
+            saveExamAttempts(cls, attempts);
+            loadStudents();
+            loadStatistics();
+        }
+
+        // Reset all attempts for a class
+        function resetAllClassAttempts() {
+            const cls = document.getElementById('classSelectAdmin').value;
+           
+            if (!cls) {
+                alert('Please select a class');
+                return;
+            }
+           
+            if (confirm(`Are you sure you want to reset ALL attempts for ${cls.toUpperCase()}? This cannot be undone.`)) {
+                localStorage.removeItem(`${cls}_exam_attempts`);
+                alert(`All attempts reset for ${cls.toUpperCase()}`);
+                loadStudents();
+                loadStatistics();
+                loadAttempts();
+            }
+        }
+
+        // Load attempts for viewing
+        function loadAttempts() {
+            const cls = document.getElementById('viewClassSelect').value;
+            const attemptsList = document.getElementById('attemptsList');
+           
+            if (!cls) {
+                attemptsList.innerHTML = '<div class="attempt-item">Please select a class</div>';
+                return;
+            }
+           
+            const attempts = getExamAttempts(cls);
+            const students = Object.keys(attempts);
+           
+            if (students.length === 0) {
+                attemptsList.innerHTML = '<div class="attempt-item">No attempts found for this class</div>';
+                return;
+            }
+           
+            let html = '';
+            students.forEach(student => {
+                const studentAttempts = attempts[student];
+                const completedSubjects = Object.keys(studentAttempts).filter(sub => studentAttempts[sub]);
+               
+                html += `
+                    <div class="attempt-item">
+                        <div>
+                            <strong>${student}</strong>
+                            <br>
+                            <small>Completed: ${completedSubjects.length} subjects</small>
+                        </div>
+                        <div class="completed">
+                            ${completedSubjects.length > 0 ? '✓' : 'No attempts'}
+                        </div>
+                    </div>
+                `;
+            });
+           
+            attemptsList.innerHTML = html;
+        }
+
+        function goToDashboard() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

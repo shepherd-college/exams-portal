@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
-    <title>cbt.Shepherdinternationalcollege.org - MATHEMATICS   Exam</title>
+    <title>cbt.wisdomschools.org - Mathematics Exam</title>
     <script>
          // Disable back navigation
     history.pushState(null, null, location.href);
@@ -106,7 +106,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('img/templogo1.jpg') no-repeat center center;
+            background: url('img/mainlogo.png') no-repeat center center;
             background-size: 300px 300px;
             opacity: 0.1;
             z-index: 0;
@@ -135,7 +135,7 @@
         }
         #header {
             padding: 20px;
-            background: linear-gradient(to right, brown, darkred);
+            background: linear-gradient(to right, purple, fuchsia);
             color: white;
             border-bottom: 5px solid #ff9800;
         }
@@ -475,7 +475,7 @@
             <button id="logout" onclick="logout()">Logout</button>
         </div>
         <div id="logo">
-            <img src="img/templogo1.jpg" alt="COLLEGE CBT PORTAL">
+            <img src="img/mainlogo.png" alt="COLLEGE CBT PORTAL">
         </div>
         <div id="student-info">
             <center><strong>ATTENTION! CLICK ON SUBMIT BUTTON BEFORE YOUR TIME IS UP TO SAVE YOUR SCORE</strong></center>
@@ -497,7 +497,7 @@
         </div>-->
 
     
-        <center><h3>SHEPHERD INTERNATIONAL COLLEGE SIJE  ADO EKITI </h3></center> 
+        <center><h3>WISDOM FOUNDATIONS INTERNATIONAL SCHOOLS ADO EKITI </h3></center> 
         <center><h3>FIRST TERM EXAMINATION 2025/2026 ACADEMIC SESSION</h3></center>
        
         <!-- SECTION TOGGLE BUTTONS -->
@@ -507,7 +507,7 @@
         </div>
        
         <div class="exam-info">
-            Exam: <span id="examInfo" style="color: lime;">   MATHEMATICS   - JSS1 (FIRST TERM)</span>
+            Exam: <span id="examInfo" style="color: lime;">  MATHEMATICS - JSS1 (FIRST TERM)</span>
         </div>
        
         <div id="timer"></div>
@@ -574,110 +574,192 @@
     </div>
    
     <div class="windows-activate">
-        <p> &copy; cbt.Shepherdinternationalcollege.org</p>
+        <p> &copy; cbt.wisdomschools.org</p>
     </div>
 
     <script>
            // Get stored username and image from sessionStorage
        
             
+    
         // ================== STATIC QUESTIONS DATA ==================
-        const staticObjectivesQuestions = [
-            {
-                id: 1,
-                question: "What is the value of &pi; (pi) approximately?",
-                options: {
-                    A: "3.14",
-                    B: "2.71",
-                    C: "1.41",
-                    D: "1.61"
-                },
-                answer: "A",
-                image: "img/wfs101.png"
-            },
-            {
-                id: 2,
-                question: "If &theta; = 30&deg;, what is sin(&theta;)?",
-                options: {
-                    A: "1/2",
-                    B: "&radic;3/2",
-                    C: "&radic;2/2",
-                    D: "1"
-                },
-                answer: "A",
-                image: null
-            },
-            {
-                id: 3,
-                question: "What is the area of a circle with radius r?",
-                options: {
-                    A: "&pi;r^2",
-                    B: "2&pi;r",
-                    C: "&pi;r",
-                    D: "4&pi;r^2"
-                },
-                answer: "A",
-                image: null
-            },
-            {
-                id: 4,
-                question: "Solve for x: 2x + 5 = 15",
-                options: {
-                    A: "5",
-                    B: "10",
-                    C: "7.5",
-                    D: "2.5"
-                },
-                answer: "A",
-                image: null
-            },
-            {
-                id: 5,
-                question: "What is the Pythagorean theorem for a right-angled triangle?",
-                options: {
-                    A: "a^2 + b^2 = c^2",
-                    B: "a + b = c",
-                    C: "a &times; b = c",
-                    D: "a^2 &times; b^2 = c^2"
-                },
-                answer: "A",
-                image: null
-            }
-        
-        ];
+   const staticObjectivesQuestions = [
+        {
+          id: 1,
+          question: "Find the set of prime factors of 12",
+          options: { A: "3", B: "2, 3", C: "3, 4", D: "2, 6" },
+          answer: "B",
+          image: null
+        },
+        {
+          id: 2,
+          question: "Which of the following is not a prime number?",
+          options: { A: "3", B: "5", C: "7", D: "9" },
+          answer: "D",
+          image: null
+        },
+        {
+          id: 3,
+          question: "Find the highest common factor (H.C.F) of 20, 12 and 28.",
+          options: { A: "2", B: "4", C: "8", D: "12" },
+          answer: "A",
+          image: null
+        },
+        {
+          id: 4,
+          question: "Find the sum of 124.3, 0.275 and 74.06 (correct to one decimal place)",
+          options: { A: "198.6", B: "198.7", C: "892.0", D: "892.4" },
+          answer: "A",
+          image: null
+        },
+        {
+          id: 5,
+          question: "What is the place value of 9 in the number 624.93?",
+          options: { A: "hundred", B: "tens", C: "units", D: "tenths" },
+          answer: "D",
+          image: null
+        },
+        {
+          id: 6,
+          question: "Find the lowest common multiple (L.C.M) of 4, 5 and 6",
+          options: { A: "20", B: "24", C: "30", D: "60" },
+          answer: "D",
+          image: null
+        },
+        {
+          id: 7,
+          question: "Evaluate 0.25 × 0.06, correct to three decimal places.",
+          options: { A: "0.001", B: "0.02", C: "0.015", D: "0.075" },
+          answer: "C",
+          image: null
+        },
+        {
+          id: 8,
+          question: "Express 1/8 as a decimal fraction",
+          options: { A: "0.125", B: "0.375", C: "0.625", D: "0.750" },
+          answer: "C",
+          image: null
+        },
+        {
+          id: 9,
+          question: "Simplify 3/4 − 1/2 + 1/3",
+          options: { A: "11/12", B: "7/12", C: "5/6", D: "1" },
+          answer: "B",
+          image: null
+        },
+        {
+          id: 10,
+          question: "Express 2/5 as a decimal fraction",
+          options: { A: "0.4", B: "0.04", C: "0.004", D: "0.0004" },
+          answer: "B",
+          image: null
+        },
+        {
+          id: 11,
+          question: "Correct 0.003858 to three significant figures.",
+          options: { A: "0.00385", B: "0.00386", C: "0.0039", D: "386" },
+          answer: "B",
+          image: null
+        },
+        {
+          id: 12,
+          question: "Evaluate 0.37 × 7",
+          options: { A: "0.259", B: "2.590", C: "25.900", D: "259.000" },
+          answer: "A",
+          image: null
+        },
+        {
+          id: 13,
+          question: "Express 12/18 to its lowest term",
+          options: { A: "2", B: "2/3", C: "4/6", D: "1/3" },
+          answer: "C",
+          image: null
+        },
+        {
+          id: 14,
+          question: "HELP = _____ (using code A=1, B=2 ... Z=26)",
+          options: { A: "7, 4, 8, 9", B: "10, 5, 9, 11", C: "8, 5, 12, 16", D: "4, 5, 6, 15" },
+          answer: "C",
+          image: null
+        },
+        {
+          id: 15,
+          question: "SIT = _____",
+          options: { A: "16, 17, 19", B: "5, 22, 1", C: "20, 14, 25", D: "19, 9, 20" },
+          answer: "D",
+          image: null
+        },
+        {
+          id: 16,
+          question: "FAITH = _____",
+          options: { A: "6, 1, 9, 20, 8", B: "20, 9, 8, 1, 6", C: "10, 12, 14, 16, 18", D: "1, 2, 3, 4, 5" },
+          answer: "A",
+          image: null
+        },
+        {
+          id: 17,
+          question: "SAVE = _____",
+          options: { A: "19, 2, 20, 5", B: "19, 1, 22, 5", C: "26, 12, 3, 5", D: "7, 8, 10, 11" },
+          answer: "B",
+          image: null
+        },
+        {
+          id: 18,
+          question: "2, 5, 14, 9, 14 = ______",
+          options: { A: "BENIN", B: "BAMIM", C: "BENAN", D: "BEMAM" },
+          answer: "A",
+          image: null
+        },
+        {
+          id: 19,
+          question: "13, 1, 14 = _____",
+          options: { A: "NAM", B: "MAP", C: "MAN", D: "PAM" },
+          answer: "C",
+          image: null
+        },
+        {
+          id: 20,
+          question: "3, 18, 25 = _____",
+          options: { A: "CAP", B: "CRY", C: "CAN", D: "CAT" },
+          answer: "B",
+          image: null
+        }
+];
+
 
         const staticTheoryQuestions = [
-            {
-                id: 1,
-                question: "Explain the concept of place value in mathematics. Use examples to illustrate your explanation.",
-                marks: 10,
-                image: null
-            },
-            {
-                id: 2,
-                question: "What are prime numbers? Give five examples and explain why each is a prime number.",
-                marks: 15,
-                image: "img/wfs101.png"
-            },
-            {
-                id: 3,
-                question: "Solve the equation: 3x + 7 = 22. Show all your working step by step.",
-                marks: 12,
-                image: null
-            },
-            {
-                id: 4,
-                question: "Calculate the perimeter of a rectangle with length 15cm and width 8cm. Explain your method and show all calculations.",
-                marks: 10,
-                image: null
-            },
-            {
-                id: 5,
-                question: "A triangle has angles measuring 45&deg;, 45&deg;, and 90&deg;. If the two equal sides are each 10cm long, calculate the length of the hypotenuse. Show your working using the Pythagorean theorem.",
-                marks: 15,
-                image: null
-            }
-        ];
+      {
+        id: 1,
+        question: "Express the following in words: (i): 40037 (ii): 208045 (iii): 1000009", 
+      
+        marks: 10,
+        image: null
+      },
+      {
+        id: 2,
+        question: "Use the number line to solve the following: (i): +2 + 5 = ___ (ii): +6 - 3 = ___ (iii): -5 + 3 = ___",
+        marks: 10,
+        image: null
+      },
+      {
+        id: 3,
+        question: "Answer the following: (i): Find the H.C.F of 9, 12, 18 (ii): Find the L.C.M of 10, 20, 30",  
+        marks: 10,
+        image: null
+      },
+      {
+        id: 4,
+        question: "Convert the following to base 10: (i): 11011₂ to base 10   (ii): 121₃ to base 10", 
+        marks: 10,
+        image: null
+      },
+      {
+        id: 5,
+        question: "Simplify the expression: i: ( 3/4 ÷ 1/2 ) + ( 5/6 + 1/3 )",    
+        marks: 10,
+        image: null
+      }
+];
         // ================== APPLICATION VARIABLES ==================
         let questions = [];
         let currentQuestion = 0;
@@ -695,8 +777,8 @@
                 const examInfoText = examInfoElement.textContent;
                 // Parse the text to extract subject and class
                 // This is a simple example - adjust based on your actual text format
-                localStorage.setItem('examSubject', 'FINAL TEST');
-                localStorage.setItem('examClass', 'SCORE');
+                localStorage.setItem('examSubject', 'EXAMINATION');
+                localStorage.setItem('examClass', 'RERSULT');
             }
             localStorage.setItem('examTerm', 'FIRST TERM 2025/2026');
              /*let username = sessionStorage.getItem('username');

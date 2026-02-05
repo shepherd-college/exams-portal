@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
-    <title>cbt.shepherdinternationalcollege.org</title>
+    <title>cbt.wisdomschools.org</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* {
@@ -52,7 +52,7 @@
             --background-color: #f5f5f5;
             --text-color: #333;
             --card-bg: white;
-            --header-bg: darkred;/*#008000;*/
+            --header-bg: gold;/*#008000;*/
             --header-text: white;
             --nav-bg: #006400;
             --input-border: #ddd;
@@ -94,7 +94,7 @@
        
         /* Navigation Bar */
         nav {
-            background-color: pink;
+            background-color: var(--nav-bg);
             padding: 15px 0;
             margin-bottom: 25px;
             border-radius: 8px;
@@ -308,13 +308,9 @@
                 <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
                 <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
-                <li><a href="Exam_Reset_Validation.html"><i class="fas fa-cogs"></i>Reset </a></li>
                 <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
                 <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
                 <li><a href="index.html"><i class="fas fa-cogs"></i> Sign Out</a></li>
-
-                
-                 
             </ul>
             <div>
                 <button class="theme-toggle" id="themeToggle">
@@ -328,10 +324,10 @@
         <header>
             <div class="logo-container">
                 <!--<div class="logo"><img id="student-image" src="img/mainlogojpg" alt="Profile Picture"></div>-->
-                <div><img src="img/mainlogo.jpg" alt="Profile Picture"></div>
+                <div><img src="img/wisdom_logo1.jpg" alt="Profile Picture"></div>
                
             </div>
-            <p>2025/2026 SECOND TERM COMPUTER BASED TEST EXAMINATION</p>
+            <p>2025/2026 FIRST TERM COMPUTER BASED TEST EXAMINATION</p>
         </header>
        
     
@@ -350,36 +346,23 @@
 
              <div class="exam-sections">
             <div class="exam-section">
-                <div class="section-header"> SHEPHERD COLLEGE JUNIOR SECONDARY</div>
+                <div class="section-header"><span style="visibility: hidden;">--------------------------------------------------</span>ENTER PASSWORD TO RESET EXAM ATTEMPT FOR STUDENTS</div>
                 <div class="section-body">
-                <p class="instructions"><span style="visibility: hidden; color: red;">----------------------------------------</span>JUNIOR CATEGORY </p>
+                <p class="instructions"><span style="visibility: hidden; color: red;">-----------------------------------------------------------------</span>TYPE PASSWORD TO RESET ATTEMPT BELOW</p>
                    
                  <div class="input-group">
                         
-                       <input type="password" id="input1" placeholder="Junior">
+                       <input type="password" id="input1" placeholder="Enter Admin Password To Reset students Exam Attempt ">
                         <button onclick="checkInput1()" class="btn">Enter</button>
                     </div>
                 </div>
             </div>
 
-              <div class="exam-section">
-                <div class="section-header">  COLLEGE SENIOR SECONDARY □</div>
-                <div class="section-body">
-                    <p class="instructions"  color: red;><span style="visibility: hidden;">--------------------------------------</span>SENIOR CATEGORY </p>
-                   
-                    <div class="input-group">
-                           <input type="password" id="input2" placeholder="Senior">
-                            <button onclick="checkInput2()"class="btn">Enter</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-       
-        <div class="windows-activate">
-           <p>&copy; cbt.shepherdinternationalcollege.org. All rights reserved.</p>
-          
-        </div>
+   
+     
+        
     </div>
+    <div><footer><center><p>&copy; cbt.wisdomschools.org. All rights reserved.</p></center></footer></div>
            
 
 
@@ -394,22 +377,22 @@ document.getElementById('user').innerText = sessionStorage.getItem('username');
 document.getElementById('userImage').src = sessionStorage.getItem('image');
 
 function checkInput1() {
-    if(document.getElementById('input1').value === 'junior') {
+    if(document.getElementById('input1').value === 'admin_reset') {
         sessionStorage.setItem('userType', 'junior');
-        window.location.href = 'index_juniors.html';
+        window.location.href = 'Exam_reset.html';
     } else {
-        alert('Incorrect input for Junior');
+        alert('Incorrect Password  ');
     }
 }
 
-function checkInput2() {
+/*function checkInput2() {
     if(document.getElementById('input2').value === 'senior') {
         sessionStorage.setItem('userType', 'senior');
-        window.location.href = 'index_seniors.html';
+        window.location.href = 'index_senior.html';
     } else {
         alert('Incorrect input for Senior');
     }
-}
+}*/
 
 
    // Theme toggle functionality

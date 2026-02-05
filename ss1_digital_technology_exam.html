@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="fav_icon2.ico">
-    <title>cbt.shepherdInternationalcollege.org - DIGITAL TECHNOLOGY   Exam</title>
+    <title>cbt.wisdomschools.org - DIGITAL TECHNOLOGY   Exam</title>
     <script>
          // Disable back navigation
     history.pushState(null, null, location.href);
@@ -135,7 +135,7 @@
         }
         #header {
             padding: 20px;
-            background: linear-gradient(to right, darkred, pink);
+            background: linear-gradient(to right, purple, fuchsia);
             color: white;
             border-bottom: 5px solid #ff9800;
         }
@@ -475,7 +475,7 @@
             <button id="logout" onclick="logout()">Logout</button>
         </div>
         <div id="logo">
-            <img src="img/mainlogo.jpg" alt="COLLEGE CBT PORTAL">
+            <img src="img/mainlogo.png" alt="COLLEGE CBT PORTAL">
         </div>
         <div id="student-info">
             <center><strong>ATTENTION! CLICK ON SUBMIT BUTTON BEFORE YOUR TIME IS UP TO SAVE YOUR SCORE</strong></center>
@@ -497,8 +497,8 @@
         </div>-->
 
     
-        <center><h3>SHEPHERD INTERNATIONAL COLLEGE ADO EKITI </h3></center> 
-        <center><h3>SECOND TERM EXAMINATION 2025/2026 ACADEMIC SESSION</h3></center>
+        <center><h3>WISDOM FOUNDATIONS INTERNATIONAL SCHOOLS ADO EKITI </h3></center> 
+        <center><h3>2ND TERM EXAMINATION 2025/2026 ACADEMIC SESSION</h3></center>
        
         <!-- SECTION TOGGLE BUTTONS -->
         <div class="section-toggle">
@@ -507,7 +507,7 @@
         </div>
        
         <div class="exam-info">
-            Exam: <span id="examInfo" style="color: lime;">  COMPUTER & DIGITAL TECHNOLOGY   - JSS1 (SECOND TERM)</span>
+            Exam: <span id="examInfo" style="color: lime;">  COMPUTER & DIGITAL TECHNOLOGY   - SS1 (2ND TERM)</span>
         </div>
        
         <div id="timer"></div>
@@ -574,7 +574,7 @@
     </div>
    
     <div class="windows-activate">
-        <p> &copy; cbt.shepherdinternationalcollege.org</p>
+        <p> &copy; cbt.wisdomschools.org</p>
     </div>
 
     <script>
@@ -711,7 +711,7 @@
                 "id": 1,
                 "question": "a. Define Data\nb. Fill in the following for Information Transmission:\n- Examples of Ancient Methods\n- Examples of Modern Methods  ",
                 "marks": 0,
-                "image": "images/Jss1_computer_theory1.png"
+                "image": "images/ss1_computer_theory1.png"
               },
               {
                 "id": 2,
@@ -723,7 +723,7 @@
                 "id": 3,
                 "question": "a. Give five Information Ages\nb. Fill in the following means of Information Transmission:\n- Examples of Electronic Devices\n- Examples of Non-Electronic Devices ",
                 "marks": 0,
-                "image": "images/Jss1_computer_theory3.png"
+                "image": "images/ss1_computer_theory3.png"
               }
           
            
@@ -747,9 +747,9 @@
                 // Parse the text to extract subject and class
                 // This is a simple example - adjust based on your actual text format
                 localStorage.setItem('examSubject', 'EXAMINATION');
-                localStorage.setItem('examClass', 'RESULT');
+                localStorage.setItem('examClass', 'RERSULT');
             }
-            localStorage.setItem('examTerm', 'SECOND TERM 2025/2026');
+            localStorage.setItem('examTerm', 'FIRST TERM 2025/2026');
              /*let username = sessionStorage.getItem('username');
              const userImage = sessionStorage.getItem('image');
             document.getElementById("usernameDisplay").innerText = "WELCOME:" + " " + username;
@@ -1078,7 +1078,7 @@
                     localStorage.setItem("pendingUsername", username);
                    
                     // ✅ Get exam info from sessionStorage or use default
-                    const examInfo = sessionStorage.getItem('examInfo') || 'EXAM TEST  - RESULT (SECOND TERM)';
+                    const examInfo = sessionStorage.getItem('examInfo') || 'EXAMINATION - RERSULT (2ND TERM)';
                     localStorage.setItem("examInfo", examInfo);
                    
                     // ✅ DO NOT mark exam as completed here - wait for confirmation on results page
